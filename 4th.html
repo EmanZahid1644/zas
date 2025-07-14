@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZAS Health Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-[#fdfdfd] text-gray-900">
+
+  <!-- Navbar -->
+  <header class="bg-white fixed top-0 left-0 right-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <button class="md:hidden text-2xl">☰</button>
+        <h1 class="text-2xl font-bold text-[#005f5f]">ZAS Health Services</h1>
+      </div>
+      <div class="flex gap-4 text-xl">
+        <span class="hover:text-[#d76d60] cursor-pointer">👤</span>
+        <span class="hover:text-[#d76d60] cursor-pointer">🛒</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-[95vh] bg-center bg-cover flex items-center justify-center text-center pt-20" style="background-image: url('https://images.pexels.com/photos/7615466/pexels-photo-7615466.jpeg');">
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="relative z-10 max-w-2xl px-4">
+      <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight mb-4">Rooted in Nature. Backed by Science.</h1>
+      <p class="text-white text-lg mb-6">Natural, luxurious wellness backed by clinical research. Experience harmony with ZAS.</p>
+      <input type="text" placeholder="Search our Store" class="w-full px-4 py-3 border-none rounded-lg shadow focus:outline-none focus:ring-2 focus:ring-[#d76d60]" />
+    </div>
+  </section>
+
+  <!-- Navigation Links Under Hero -->
+  <nav class="bg-white shadow-sm py-4 px-6 flex justify-center space-x-6 text-sm font-medium text-gray-700 border-t border-b">
+    <a href="#" class="hover:text-[#005f5f]">Home</a>
+    <a href="#" class="hover:text-[#005f5f]">About Us</a>
+    <a href="#" class="hover:text-[#005f5f]">Contact Us</a>
+    <a href="#" class="hover:text-[#005f5f]">Products</a>
+    <a href="#" class="hover:text-[#005f5f]">Best Sellers</a>
+  </nav>
+
+  <!-- Best Sellers -->
+  <section class="px-6 py-20 bg-[#f5fafa]">
+    <h2 class="text-4xl font-semibold text-center text-[#005f5f] mb-12">Best Sellers</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl text-center transition">
+        <img src="https://via.placeholder.com/120" class="mx-auto mb-4 rounded-lg" />
+        <h3 class="text-lg font-semibold">Immunity Booster</h3>
+        <p class="text-[#d76d60] font-bold mt-2">$25</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl text-center transition">
+        <img src="https://via.placeholder.com/120" class="mx-auto mb-4 rounded-lg" />
+        <h3 class="text-lg font-semibold">Stress Relief</h3>
+        <p class="text-[#d76d60] font-bold mt-2">$30</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl text-center transition">
+        <img src="https://via.placeholder.com/120" class="mx-auto mb-4 rounded-lg" />
+        <h3 class="text-lg font-semibold">Joint Support</h3>
+        <p class="text-[#d76d60] font-bold mt-2">$28</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl text-center transition">
+        <img src="https://via.placeholder.com/120" class="mx-auto mb-4 rounded-lg" />
+        <h3 class="text-lg font-semibold">Brain Enhancer</h3>
+        <p class="text-[#d76d60] font-bold mt-2">$32</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-white px-6 py-20">
+    <h2 class="text-4xl font-bold text-center mb-12 text-[#005f5f]">Customer Testimonials</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="bg-[#fdf8f6] p-6 rounded-2xl shadow-md">
+        <p class="italic text-sm">“ZAS products changed my life. The stress relief drops are my daily go-to!”</p>
+        <p class="mt-4 font-semibold text-[#d76d60]">– Ayesha K.</p>
+      </div>
+      <div class="bg-[#fdf8f6] p-6 rounded-2xl shadow-md">
+        <p class="italic text-sm">“Amazing natural supplements, beautifully packaged and effective.”</p>
+        <p class="mt-4 font-semibold text-[#d76d60]">– Omar R.</p>
+      </div>
+      <div class="bg-[#fdf8f6] p-6 rounded-2xl shadow-md">
+        <p class="italic text-sm">“My whole family uses ZAS now. Highly recommended!”</p>
+        <p class="mt-4 font-semibold text-[#d76d60]">– Mehak L.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join Community -->
+  <section class="bg-[#e6f1f1] px-6 py-20">
+    <h2 class="text-4xl font-bold text-center text-[#005f5f] mb-10">Join the ZAS Community</h2>
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+      <input type="text" placeholder="First Name" class="border p-3 rounded-lg" required>
+      <input type="text" placeholder="Last Name" class="border p-3 rounded-lg" required>
+      <input type="email" placeholder="Email" class="border p-3 rounded-lg col-span-2" required>
+      <input type="date" class="border p-3 rounded-lg col-span-2" required>
+      <button type="submit" class="bg-[#005f5f] text-white py-3 rounded-lg col-span-2 hover:bg-[#004646]">Sign Up</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#f9fafa] text-center py-6 border-t text-sm">
+    <div class="flex justify-center gap-6 text-xl mb-3">
+      <span>📘</span><span>📸</span><span>📱</span>
+    </div>
+    <div class="flex justify-center gap-6">
+      <a href="#" class="hover:text-[#005f5f]">About</a>
+      <a href="#" class="hover:text-[#005f5f]">Help</a>
+      <a href="#" class="hover:text-[#005f5f]">Privacy</a>
+    </div>
+  </footer>
+
+</body>
+</html>

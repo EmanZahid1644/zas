@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZAS Health Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    h1,h2,h3,h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Dark mode vars */
+    body.dark {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    body.dark header,
+    body.dark nav,
+    body.dark section,
+    body.dark footer {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+      box-shadow: none;
+    }
+    body.dark a:hover {
+      color: #84e1bc;
+    }
+    body.dark input, body.dark button {
+      background-color: #2a2a2a;
+      color: #ddd;
+      border-color: #555;
+    }
+    body.dark input::placeholder {
+      color: #aaa;
+    }
+
+    /* Animated underline nav links */
+    nav a {
+      position: relative;
+      display: inline-block;
+      color: inherit;
+      text-decoration: none;
+      padding-bottom: 4px;
+      transition: color 0.3s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      transition: width 0.3s;
+      border-radius: 1px;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Smooth fade & slide */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation-fill-mode: forwards;
+      animation-duration: 0.9s;
+      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fade-in.visible {
+      animation-name: fadeInUp;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hero parallax background */
+    .hero-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      filter: brightness(0.65);
+      transition: filter 0.3s ease;
+    }
+    .hero-bg:hover {
+      filter: brightness(0.55);
+    }
+
+    /* Add button bounce */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) }
+      50% { transform: translateY(-5px) }
+    }
+    button.add-btn {
+      animation: bounce 2.5s infinite;
+      transition: background-color 0.3s;
+    }
+    button.add-btn:hover {
+      animation-play-state: paused;
+      background-color: #059669;
+      color: #f0fdf4;
+    }
+
+    /* Mobile menu slide fade */
+    #sideMenu {
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+    }
+    #sideMenu.open {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    #sideMenu.closed {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    /* Section background gradients */
+    section {
+      background: linear-gradient(135deg, #f0fdfa 0%, #d1fae5 100%);
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+    }
+    body.dark section {
+      background: linear-gradient(135deg, #0f2924 0%, #134e43 100%);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #065f46;
+      color: #d1fae5;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #a7f3d0;
+      text-decoration: underline;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #4ade80;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800 transition-colors duration-300">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between p-4 shadow-md sticky top-0 bg-white z-50">
+    <div class="flex items-center">
+      <button id="menuBtn" class="text-3xl mr-3 focus:outline-none" aria-label="Toggle menu">&#9776;</button>
+      <h1 class="text-xl font-bold tracking-wide select-none text-green-700">ZAS Health Services</h1>
+    </div>
+    <div class="flex gap-4 items-center">
+      <button id="darkToggle" aria-label="Toggle Dark Mode" class="text-green-600 hover:text-green-800 focus:outline-none" title="Toggle Dark Mode">
+        <svg id="darkIcon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path id="darkPath" stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m8-9h1M3 12H2m15.364-6.364l.707.707M6.343 17.657l.707.707m0-11.314l-.707.707M17.657 17.657l-.707.707M12 5a7 7 0 000 14 7 7 0 000-14z"/></svg>
+      </button>
+      <button aria-label="Search"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600 hover:text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1118.88 6.196 9 9 0 015.12 17.804z" /></svg></button>
+      <button aria-label="Cart"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-600 hover:text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h14l-1.35 6.4a1 1 0 01-.99.6H7.1a1 1 0 01-1-1V6h16" /></svg></button>
+    </div>
+  </header>
+
+  <!-- Side Menu -->
+  <nav id="sideMenu" class="fixed top-0 left-0 w-64 bg-white h-full shadow-lg transform closed z-50 overflow-y-auto">
+    <ul class="p-6 space-y-5 text-gray-700">
+      <li><a href="#" class="block hover:text-green-600">Home</a></li>
+      <li><a href="#" class="block hover:text-green-600">About Us</a></li>
+      <li><a href="#" class="block hover:text-green-600">Mission/Vision</a></li>
+      <li>
+        <details>
+          <summary class="cursor-pointer font-semibold hover:text-green-600">Products</summary>
+          <ul class="pl-4 mt-2 space-y-1 text-sm">
+            <li><a href="#" class="block hover:text-green-600">Best Sellers</a></li>
+            <li><a href="#" class="block hover:text-green-600">Kids Range</a></li>
+            <li><a href="#" class="block hover:text-green-600">Women Range</a></li>
+            <li><a href="#" class="block hover:text-green-600">Men Range</a></li>
+            <li><a href="#" class="block hover:text-green-600">Beauty Range</a></li>
+            <li><a href="#" class="block hover:text-green-600">Diabetes Support</a></li>
+            <li><a href="#" class="block hover:text-green-600">Brain Health</a></li>
+            <li><a href="#" class="block hover:text-green-600">Bones, Muscles & Joints</a></li>
+            <li><a href="#" class="block hover:text-green-600">Stress & Sleep</a></li>
+            <li><a href="#" class="block hover:text-green-600">Immune System</a></li>
+            <li><a href="#" class="block hover:text-green-600">Weight Management</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a href="#" class="block hover:text-green-600">CEO Message</a></li>
+      <li><a href="#" class="block hover:text-green-600">Certifications</a></li>
+      <li><a href="#" class="block hover:text-green-600">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Overlay for side menu -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-30 hidden z-40"></div>
+
+  <!-- Search Bar -->
+  <div class="border-b px-6 py-3 flex items-center gap-3 max-w-4xl mx-auto">
+    <svg class="w-5 h-5 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+    <input type="text" placeholder="Search our Store" class="w-full focus:outline-none text-sm" aria-label="Search products" />
+  </div>
+
+  <!-- Navbar (below search) -->
+  <nav class="text-center underline flex justify-center flex-wrap gap-6 text-sm py-4 bg-white shadow-sm sticky top-14 z-40">
+    <a href="#" class="hover:text-green-700">Home</a>
+    <a href="#" class="hover:text-green-700">Best Sellers</a>
+    <details class="relative group">
+      <summary class="cursor-pointer flex items-center gap-1 hover:text-green-700 select-none">Products <span class="transform group-open:rotate-180 transition-transform">&#9660;</span></summary>
+      <div class="absolute bg-white shadow-lg mt-1 p-3 space-y-2 z-50 left-1/2 -translate-x-1/2 w-52 rounded border border-gray-200 text-left">
+        <a href="#" class="block hover:text-green-600">Kids Range</a>
+        <a href="#" class="block hover:text-green-600">Women Range</a>
+        <a href="#" class="block hover:text-green-600">Men Range</a>
+        <a href="#" class="block hover:text-green-600">Beauty Range</a>
+        <a href="#" class="block hover:text-green-600">Diabetes Support</a>
+        <a href="#" class="block hover:text-green-600">Brain Health</a>
+        <a href="#" class="block hover:text-green-600">Bones & Joints</a>
+        <a href="#" class="block hover:text-green-600">Stress & Sleep</a>
+        <a href="#" class="block hover:text-green-600">Immune System</a>
+        <a href="#" class="block hover:text-green-600">Weight Management</a>
+      </div>
+    </details>
+    <a href="#" class="hover:text-green-700">About Us</a>
+    <a href="#" class="hover:text-green-700">Contact Us</a>
+  </nav>
+
+  <!-- Hero Section with parallax effect and overlay tagline -->
+  <section class="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden hero-bg" style="background-image:url('https://images.pexels.com/photos/7615466/pexels-photo-7615466.jpeg')">
+    <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center h-full px-6 text-white text-center max-w-4xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-extrabold italic drop-shadow-lg leading-tight">Rooted in Nature.<br>Backed by Science.</h2>
+      <p class="mt-5 text-lg md:text-2xl max-w-3xl drop-shadow-md tracking-wide">Homeopathy combines the power of natural healing with modern scientific methods. Safe, effective, and gentle on your body.</p>
+    </div>
+  </section>
+
+  <!-- Best Sellers -->
+  <section class="px-6 py-10 max-w-6xl mx-auto fade-in" id="bestSellersSection">
+    <h2 class="italic text-3xl mb-8 border-b border-green-600 pb-2 font-semibold">Best Sellers</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <!-- Repeat product card example -->
+      <article class="bg-white rounded-lg p-5 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1606813909167-0a0c72f5f06b?auto=format&fit=crop&w=400&q=60" alt="Product 1" class="rounded-md mb-4 aspect-[4/3] object-cover" loading="lazy" />
+        <h3 class="text-lg font-semibold mb-1">HomeoCare Capsules</h3>
+        <p class="text-sm flex-grow text-gray-600 mb-4">Promotes immune health and energy balance with natural ingredients.</p>
+        <button class="add-btn bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold self-start shadow-md">Add</button>
+      </article>
+
+      <article class="bg-white rounded-lg p-5 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1600628422245-7d9839e5ea01?auto=format&fit=crop&w=400&q=60" alt="Product 2" class="rounded-md mb-4 aspect-[4/3] object-cover" loading="lazy" />
+        <h3 class="text-lg font-semibold mb-1">SleepEase Drops</h3>
+        <p class="text-sm flex-grow text-gray-600 mb-4">Helps improve sleep quality and reduce stress naturally.</p>
+        <button class="add-btn bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold self-start shadow-md">Add</button>
+      </article>
+
+      <article class="bg-white rounded-lg p-5 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1611095564987-1bb98ac9be2f?auto=format&fit=crop&w=400&q=60" alt="Product 3" class="rounded-md mb-4 aspect-[4/3] object-cover" loading="lazy" />
+        <h3 class="text-lg font-semibold mb-1">Joint Relief Balm</h3>
+        <p class="text-sm flex-grow text-gray-600 mb-4">Reduces joint pain and inflammation with herbal extracts.</p>
+        <button class="add-btn bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold self-start shadow-md">Add</button>
+      </article>
+
+      <article class="bg-white rounded-lg p-5 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
+        <img src="https://images.unsplash.com/photo-1588776814546-6e14015a4e02?auto=format&fit=crop&w=400&q=60" alt="Product 4" class="rounded-md mb-4 aspect-[4/3] object-cover" loading="lazy" />
+        <h3 class="text-lg font-semibold mb-1">Digestive Harmony</h3>
+        <p class="text-sm flex-grow text-gray-600 mb-4">Supports digestion and gut health naturally.</p>
+        <button class="add-btn bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded font-semibold self-start shadow-md">Add</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- Info Section with green circles -->
+  <section class="px-6 py-10 max-w-4xl mx-auto fade-in flex flex-wrap justify-around gap-12">
+    <div class="flex flex-col items-center max-w-[140px] text-center">
+      <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-green-300 to-green-600 flex items-center justify-center text-3xl font-bold text-white drop-shadow-lg">100%</div>
+      <p class="mt-3 text-sm max-w-[140px] text-gray-700 dark:text-gray-300">Made in India with Quality Assurance</p>
+    </div>
+    <div class="flex flex-col items-center max-w-[140px] text-center">
+      <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-green-300 to-green-600 flex items-center justify-center text-3xl font-bold text-white drop-shadow-lg">90+</div>
+      <p class="mt-3 text-sm max-w-[140px] text-gray-700 dark:text-gray-300">Years of Experience in Natural Healthcare</p>
+    </div>
+  </section>
+
+  <!-- Sign Up Form -->
+  <section class="px-6 py-10 max-w-3xl mx-auto fade-in mb-20">
+    <h3 class="text-2xl font-semibold text-center mb-6">Sign Up for Our Newsletter</h3>
+    <form class="flex flex-col sm:flex-row gap-4 justify-center" action="#" method="post" aria-label="Sign up for newsletter">
+      <input type="email" name="email" placeholder="Your email address" required
+        class="px-4 py-3 rounded border border-gray-300 focus:border-green-600 focus:outline-none flex-grow text-sm dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600" />
+      <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded font-semibold text-sm transition">Sign Up</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <p>© 2025 ZAS Health Services. All rights reserved.</p>
+    <p class="mt-2">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </p>
+    <p class="mt-4 flex justify-center gap-6 text-green-200">
+      <a href="#" aria-label="Facebook" class="hover:text-green-400">🔵</a>
+      <a href="#" aria-label="Twitter" class="hover:text-green-400">🐦</a>
+      <a href="#" aria-label="Instagram" class="hover:text-green-400">📸</a>
+    </p>
+  </footer>
+
+<script>
+  // Side menu toggle with fade & slide
+  const menuBtn = document.getElementById('menuBtn');
+  const sideMenu = document.getElementById('sideMenu');
+  const overlay = document.getElementById('overlay');
+
+  menuBtn.addEventListener('click', () => {
+    if(sideMenu.classList.contains('closed')) {
+      sideMenu.classList.remove('closed');
+      sideMenu.classList.add('open');
+      overlay.classList.remove('hidden');
+    } else {
+      sideMenu.classList.add('closed');
+      sideMenu.classList.remove('open');
+      overlay.classList.add('hidden');
+    }
+  });
+  overlay.addEventListener('click', () => {
+    sideMenu.classList.add('closed');
+    sideMenu.classList.remove('open');
+    overlay.classList.add('hidden');
+  });
+
+  // Fade in on scroll
+  const fadeElems = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  fadeElems.forEach(el => observer.observe(el));
+
+  // Dark mode toggle
+  const darkToggle = document.getElementById('darkToggle');
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+  });
+</script>
+
+</body>
+</html>

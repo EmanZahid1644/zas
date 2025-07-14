@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZAS Health Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animations */
+    @keyframes pulse-grow {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .pulse-grow {
+      animation: pulse-grow 3s ease-in-out infinite;
+    }
+
+    /* Underline animation for buttons */
+    .underline-hover:hover::after {
+      width: 100%;
+    }
+    .underline-hover::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #16a34a; /* green-600 */
+      transition: width 0.3s ease;
+      margin-top: 4px;
+      border-radius: 2px;
+    }
+
+    /* Dropdown animations */
+    .dropdown-enter {
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.3s ease-out;
+    }
+    .dropdown-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- HEADER with menu, logo, account & cart -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <!-- Menu icon -->
+      <button id="menuBtn" aria-label="Toggle menu" class="md:hidden focus:outline-none">
+        <!-- three lines icon -->
+        <svg class="w-8 h-8 text-green-700" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <line x1="3" y1="7" x2="21" y2="7"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="17" x2="21" y2="17"></line>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class="text-2xl font-bold text-green-700 select-none">
+        ZAS Health Services
+      </div>
+
+      <!-- Right icons -->
+      <div class="flex space-x-6">
+        <!-- Account -->
+        <button aria-label="Account" class="text-green-700 hover:text-green-900 focus:outline-none">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="7" r="4" />
+            <path d="M5.5 21a8.38 8.38 0 0113 0" />
+          </svg>
+        </button>
+        <!-- Cart -->
+        <button aria-label="Cart" class="text-green-700 hover:text-green-900 focus:outline-none relative">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.68 13.39a1 1 0 001 0.61h9.72a1 1 0 00.92-1.38L17.55 6H6" />
+          </svg>
+          <span id="cartCount" class="absolute -top-1 -right-2 bg-red-600 text-white rounded-full text-xs px-1">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <nav id="mobileMenu" class="hidden bg-white border-t border-green-200 p-4 space-y-4 md:hidden max-w-7xl mx-auto">
+      <ul class="space-y-2 text-green-700 font-semibold">
+        <li><a href="#" class="block hover:text-green-900">Home</a></li>
+        <li><a href="#" class="block hover:text-green-900">About Us</a></li>
+        <li>
+          <button id="productsToggle" class="flex items-center justify-between w-full hover:text-green-900 font-semibold focus:outline-none">
+            Products
+            <svg id="productsArrow" class="w-4 h-4 ml-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <ul id="productsDropdown" class="hidden pl-4 mt-2 space-y-1 text-green-700 font-normal">
+            <li><a href="#" class="block hover:text-green-900">Best Sellers</a></li>
+            <li><a href="#" class="block hover:text-green-900">Kids Range</a></li>
+            <li><a href="#" class="block hover:text-green-900">Women Range</a></li>
+            <li><a href="#" class="block hover:text-green-900">Men Range</a></li>
+            <li><a href="#" class="block hover:text-green-900">Beauty Range</a></li>
+            <li><a href="#" class="block hover:text-green-900">Diabetes Support</a></li>
+            <li><a href="#" class="block hover:text-green-900">Brain Health & Neurological</a></li>
+            <li><a href="#" class="block hover:text-green-900">Bones, Muscles & Joints</a></li>
+            <li><a href="#" class="block hover:text-green-900">Stress & Sleep</a></li>
+            <li><a href="#" class="block hover:text-green-900">Immune System</a></li>
+            <li><a href="#" class="block hover:text-green-900">Weight Management</a></li>
+          </ul>
+        </li>
+        <li><a href="#" class="block hover:text-green-900">CEO Message</a></li>
+        <li><a href="#" class="block hover:text-green-900">Certifications</a></li>
+        <li><a href="#" class="block hover:text-green-900">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- DESKTOP NAV BAR -->
+    <nav class="hidden md:flex justify-center space-x-8 bg-white border-t border-green-200 shadow-inner py-3">
+      <a href="#" class="relative text-green-700 font-semibold underline-hover hover:text-green-900">Home</a>
+      <a href="#" class="relative text-green-700 font-semibold underline-hover hover:text-green-900">Best Sellers</a>
+      
+      <!-- Products dropdown -->
+      <div class="relative group">
+        <button
+          class="relative text-green-700 font-semibold underline-hover hover:text-green-900 flex items-center focus:outline-none"
+          aria-haspopup="true"
+          aria-expanded="false"
+          id="productsBtn"
+        >
+          Products
+          <svg class="w-4 h-4 ml-1 text-green-700 group-hover:text-green-900 transition-transform" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <ul
+          class="absolute left-0 mt-1 bg-white border border-green-200 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity min-w-[220px] z-20"
+          aria-label="submenu"
+        >
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Best Sellers</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Kids Range</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Women Range</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Men Range</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Beauty Range</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Diabetes Support</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Brain Health & Neurological</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Bones, Muscles & Joints</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Stress & Sleep</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Immune System</a></li>
+          <li><a href="#" class="block px-4 py-2 text-green-700 hover:bg-green-100">Weight Management</a></li>
+        </ul>
+      </div>
+
+      <a href="#" class="relative text-green-700 font-semibold underline-hover hover:text-green-900">About Us</a>
+      <a href="#" class="relative text-green-700 font-semibold underline-hover hover:text-green-900">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- SEARCH BAR with icon and placeholder -->
+  <section class="max-w-4xl mx-auto mt-6 px-4">
+    <form class="flex items-center border border-green-600 rounded-full px-4 py-2 shadow-sm max-w-lg mx-auto">
+      <svg class="w-6 h-6 text-green-600 mr-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input
+        type="search"
+        placeholder="Search our Store"
+        aria-label="Search our Store"
+        class="flex-grow text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-600 rounded-full px-3 py-1"
+      />
+    </form>
+  </section>
+
+  <!-- ANIMATED VIDEO -->
+  <section class="max-w-5xl mx-auto mt-10 px-4 rounded-lg overflow-hidden shadow-lg">
+    <video autoplay muted loop playsinline class="w-full max-h-96 object-cover pulse-grow" aria-label="Promotional Video">
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- TAGLINE -->
+  <section class="max-w-4xl mx-auto mt-6 px-4 text-center text-green-700 italic text-2xl font-semibold">
+    <p>"Harnessing Nature's Healing Power with Science and Compassion"</p>
+  </section>
+
+  <!-- BEST SELLERS Heading -->
+  <section class="max-w-5xl mx-auto mt-10 px-4">
+    <h2 class="text-green-700 italic font-semibold text-xl border border-green-700 rounded px-4 py-2 inline-block select-none">
+      Best Sellers
+    </h2>
+  </section>
+
+  <!-- BEST SELLERS Products -->
+  <section class="max-w-5xl mx-auto mt-6 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <!-- Product Card -->
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative flex flex-col">
+      <img
+        src="https://cdn.pixabay.com/photo/2016/11/29/04/46/homeopathy-1869301_1280.jpg"
+        alt="Homeopathy Product 1"
+        class="w-full h-40 object-cover rounded-t-lg"
+      />
+      <div class="p-4 flex flex-col flex-grow">
+        <h3 class="font-semibold text-green-700 mb-2">Homeopathy Kit</h3>
+        <p class="text-sm text-gray-600 flex-grow">Complete starter pack for homeopathy beginners.</p>
+        <button
+          class="mt-4 bg-green-600 text-white rounded px-3 py-1 hover:bg-green-700 focus:outline-none transition"
+          onclick="addToCart('Homeopathy Kit')"
+          aria-label="Add Homeopathy Kit to cart"
+        >
+          + Add
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative flex flex-col">
+      <img
+        src="https://cdn.pixabay.com/photo/2017/08/24/19/49/homeopathy-2678239_1280.jpg"
+        alt="Homeopathy Product 2"
+        class="w-full h-40 object-cover rounded-t-lg"
+      />
+      <div class="p-4 flex flex-col flex-grow">
+        <h3 class="font-semibold text-green-700 mb-2">Herbal Supplements</h3>
+        <p class="text-sm text-gray-600 flex-grow">Natural herbal supplements supporting immunity.</p>
+        <button
+          class="mt-4 bg-green-600 text-white rounded px-3 py-1 hover:bg-green-700 focus:outline-none transition"
+          onclick="addToCart('Herbal Supplements')"
+          aria-label="Add Herbal Supplements to cart"
+        >
+          + Add
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative flex flex-col">
+      <img
+        src="https://cdn.pixabay.com/photo/2016/11/19/14/00/alternative-1838513_1280.jpg"
+        alt="Homeopathy Product 3"
+        class="w-full h-40 object-cover rounded-t-lg"
+      />
+      <div class="p-4 flex flex-col flex-grow">
+        <h3 class="font-semibold text-green-700 mb-2">Energy Drops</h3>
+        <p class="text-sm text-gray-600 flex-grow">Boost your vitality with natural energy drops.</p>
+        <button
+          class="mt-4 bg-green-600 text-white rounded px-3 py-1 hover:bg-green-700 focus:outline-none transition"
+          onclick="addToCart('Energy Drops')"
+          aria-label="Add Energy Drops to cart"
+        >
+          + Add
+        </button>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow hover:shadow-lg transition relative flex flex-col">
+      <img
+        src="https://cdn.pixabay.com/photo/2017/02/15/11/56/homeopathy-2067362_1280.jpg"
+        alt="Homeopathy Product 4"
+        class="w-full h-40 object-cover rounded-t-lg"
+      />
+      <div class="p-4 flex flex-col flex-grow">
+        <h3 class="font-semibold text-green-700 mb-2">Calming Oils</h3>
+        <p class="text-sm text-gray-600 flex-grow">Natural calming oils for stress relief.</p>
+        <button
+          class="mt-4 bg-green-600 text-white rounded px-3 py-1 hover:bg-green-700 focus:outline-none transition"
+          onclick="addToCart('Calming Oils')"
+          aria-label="Add Calming Oils to cart"
+        >
+          + Add
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- See Full Collection Button -->
+  <section class="max-w-5xl mx-auto mt-6 px-4 text-right">
+    <button
+      class="inline-block bg-green-700 text-white font-semibold px-5 py-2 rounded shadow hover:bg-green-800 transition"
+      onclick="alert('Redirecting to full Best Sellers collection!')"
+      aria-label="See Full Collection"
+    >
+      See Full Collection &rarr;
+    </button>
+  </section>
+
+  <!-- Homeopathy related image and text -->
+  <section class="max-w-5xl mx-auto mt-12 px-4 flex flex-col md:flex-row items-center gap-8">
+    <img
+      src="https://cdn.pixabay.com/photo/2017/08/24/19/49/homeopathy-2678239_1280.jpg"
+      alt="Homeopathy Science"
+      class="w-full md:w-1/2 rounded-lg shadow-lg object-cover"
+    />
+    <div class="md:w-1/2 text-green-700 italic text-lg font-semibold">
+      <p>
+        Science meets nature at ZAS Health Services — delivering homeopathic solutions with proven effectiveness and uncompromised purity.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3 circles with stats -->
+  <section class="max-w-4xl mx-auto mt-14 px-4 flex justify-around text-center space-x-4">
+    <div class="flex flex-col items-center bg-white p-6 rounded-full shadow-lg w-32 h-32 justify-center">
+      <div class="text-4xl font-bold text-green-700">99%</div>
+      <div class="mt-2 text-xs font-semibold text-gray-600 max-w-[90px]">
+        Active ingredients,<br />no added binders or fillers
+      </div>
+    </div>
+    <div class="flex flex-col items-center bg-white p-6 rounded-full shadow-lg w-32 h-32 justify-center">
+      <div class="text-4xl font-bold text-green-700">100%</div>
+      <div class="mt-2 text-xs font-semibold text-gray-600 max-w-[90px]">
+        Beneficial<br />for health
+      </div>
+    </div>
+    <div class="flex flex-col items-center bg-white p-6 rounded-full shadow-lg w-32 h-32 justify-center">
+      <div class="text-4xl font-bold text-green-700">&infin;</div>
+      <div class="mt-2 text-xs font-semibold text-gray-600 max-w-[90px]">
+        Best choice<br />for you
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGN UP FORM -->
+  <section class="max-w-3xl mx-auto mt-16 px-4 bg-white p-8 rounded-lg shadow-lg">
+    <h3 class="text-green-700 font-semibold text-xl mb-4 text-center select-none">Sign Up Now</h3>
+    <p class="text-center italic mb-8 text-green-700 font-semibold">Join ZAS Community</p>
+    <form id="signupForm" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <input
+        type="text"
+        placeholder="First Name"
+        aria-label="First Name"
+        required
+        class="border border-green-400 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+        name="firstName"
+      />
+      <input
+        type="text"
+        placeholder="Last Name"
+        aria-label="Last Name"
+        required
+        class="border border-green-400 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+        name="lastName"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        aria-label="Email"
+        required
+        class="border border-green-400 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+        name="email"
+      />
+      <input
+        type="date"
+        placeholder="Birthday"
+        aria-label="Birthday"
+        required
+        class="border border-green-400 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+        name="birthday"
+      />
+      <div class="sm:col-span-2 flex justify-center">
+        <button
+          type="submit"
+          class="bg-green-600 text-white font-semibold px-10 py-2 rounded shadow hover:bg-green-700 transition focus:outline-none"
+        >
+          Sign Up
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- SOCIAL ICONS -->
+  <section class="max-w-3xl mx-auto mt-10 px-4 flex justify-center space-x-8 text-green-700 select-none">
+    <a href="#" aria-label="Facebook" class="hover:text-blue-600 transition">
+      <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+        <path d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.351c0 .732.592 1.324 1.325 1.324h11.495v-9.294H9.691v-3.622h3.488V8.413c0-3.449 2.105-5.328 5.184-5.328 1.474 0 2.738.11 3.11.159v3.607l-2.132.001c-1.672 0-2 1.25-2 1.951v2.553h4l-.52 3.622h-3.48V24h6.819c.733 0 1.325-.592 1.325-1.325V1.325c0-.733-.592-1.325-1.325-1.325z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="Instagram" class="hover:text-pink-600 transition">
+      <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+        <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 013 3v6a3 3 0 01-3 3H7a3 3 0 01-3-3V7a3 3 0 013-3h10zm-5 3a4 4 0 100 8 4 4 0 000-8zm6.5-.75a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5z"/>
+      </svg>
+    </a>
+    <a href="#" aria-label="WhatsApp" class="hover:text-green-600 transition">
+      <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+        <path d="M20.52 3.48a11.788 11.788 0 00-17.7 0 11.75 11.75 0 00-2.9 8.33c.14 3.31 1.94 6.43 5.07 8.46L4 22l4.25-1.12a11.678 11.678 0 005.27 1.26 11.787 11.787 0 007.33-19.56zM12 21a9 9 0 01-4.79-1.43l-.35-.23-2.53.67.68-2.47-.23-.36A9 9 0 1112 21zm5.07-6.07l-1.09-.31a.4.4 0 00-.44.1l-.6.6a7.325 7.325 0 01-3.67-3.67l.6-.6a.4.4 0 00.11-.44l-.31-1.1a.41.41 0 00-.39-.28h-.02a.41.41 0 00-.38.22A7.76 7.76 0 009.5 14.5a7.75 7.75 0 006.07 0c.18-.08.26-.3.21-.5z"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="max-w-7xl mx-auto mt-16 px-4 py-6 bg-green-900 text-white flex justify-between flex-wrap gap-6 text-sm select-none">
+    <div class="flex flex-col space-y-4">
+      <h4 class="font-semibold">About Us</h4>
+      <p>ZAS Health Services is dedicated to providing natural homeopathic remedies with a commitment to quality and customer care.</p>
+    </div>
+    <div class="flex flex-col space-y-4">
+      <h4 class="font-semibold">Help & Info</h4>
+      <ul>
+        <li><a href="#" class="hover:underline">FAQ</a></li>
+        <li><a href="#" class="hover:underline">Shipping & Returns</a></li>
+        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="flex flex-col space-y-4">
+      <h4 class="font-semibold">Certifications</h4>
+      <p>Certified by recognized health authorities ensuring product safety and efficacy.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Products dropdown toggle
+    const productsToggle = document.getElementById('productsToggle');
+    const productsMenu = document.getElementById('productsMenu');
+    productsToggle.addEventListener('click', () => {
+      productsMenu.classList.toggle('hidden');
+      const icon = productsToggle.querySelector('svg');
+      icon.classList.toggle('rotate-180');
+    });
+
+    // Add to cart function
+    function addToCart(productName) {
+      alert(productName + " added to cart!");
+      // Here you can add actual cart logic
+    }
+
+    // Signup form submission
+    const signupForm = document.getElementById('signupForm');
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert("Thank you for signing up, " + signupForm.firstName.value + "!");
+      signupForm.reset();
+    });
+  </script>
+</body>
+</html>

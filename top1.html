@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZAS Health Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between p-4 shadow-md sticky top-0 bg-white z-50">
+    <div class="flex items-center">
+      <button id="menuBtn" class="text-3xl mr-3">&#9776;</button>
+    </div>
+    <h1 class="text-lg font-bold tracking-wide">ZAS Health Services</h1>
+    <div class="flex gap-4">
+      <button><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1118.88 6.196 9 9 0 015.12 17.804z" /></svg></button>
+      <button><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h14l-1.35 6.4a1 1 0 01-.99.6H7.1a1 1 0 01-1-1V6h16" /></svg></button>
+    </div>
+  </header>
+
+  <!-- Side Menu -->
+  <nav id="sideMenu" class="fixed top-0 left-0 w-64 bg-white h-full shadow-lg transform -translate-x-full transition-transform duration-300 z-50">
+    <ul class="p-4 space-y-4">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Mission/Vision</a></li>
+      <li>
+        <details>
+          <summary class="cursor-pointer">Products</summary>
+          <ul class="pl-4 mt-2 space-y-1">
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">Kids Range</a></li>
+            <li><a href="#">Women Range</a></li>
+            <li><a href="#">Men Range</a></li>
+            <li><a href="#">Beauty Range</a></li>
+            <li><a href="#">Diabetes Support</a></li>
+            <li><a href="#">Brain Health</a></li>
+            <li><a href="#">Bones, Muscles & Joints</a></li>
+            <li><a href="#">Stress & Sleep</a></li>
+            <li><a href="#">Immune System</a></li>
+            <li><a href="#">Weight Management</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a href="#">CEO Message</a></li>
+      <li><a href="#">Certifications</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- Search Bar -->
+  <div class="border-b px-4 py-2 flex items-center gap-2">
+    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+    <input type="text" placeholder="Search our Store" class="w-full focus:outline-none text-sm" />
+  </div>
+
+  <!-- Navbar -->
+  <nav class="text-center underline flex justify-center flex-wrap gap-6 text-sm py-3">
+    <a href="#">Home</a>
+    <a href="#">Best Sellers</a>
+    <details class="relative">
+      <summary class="cursor-pointer flex items-center gap-1">Products <span>&#9660;</span></summary>
+      <div class="absolute bg-white shadow-lg mt-1 p-2 space-y-1 z-10 left-0 w-48 text-left">
+        <a href="#">Kids Range</a>
+        <a href="#">Women Range</a>
+        <a href="#">Men Range</a>
+        <a href="#">Beauty Range</a>
+        <a href="#">Diabetes Support</a>
+        <a href="#">Brain Health</a>
+        <a href="#">Bones & Joints</a>
+        <a href="#">Stress & Sleep</a>
+        <a href="#">Immune System</a>
+        <a href="#">Weight Management</a>
+      </div>
+    </details>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+  </nav>
+
+  <!-- Hero Image + Tagline -->
+  <section class="p-6 text-center fade-in">
+    <img src="https://images.pexels.com/photos/7615466/pexels-photo-7615466.jpeg" alt="Homeopathy" class="mx-auto rounded-xl max-h-96 object-cover" />
+    <h2 class="text-2xl italic font-bold mt-4">Rooted in Nature. Backed by Science.</h2>
+    <p class="text-sm mt-2 max-w-xl mx-auto">Homeopathy combines the power of natural healing with modern scientific methods. Safe, effective, and gentle on your body.</p>
+  </section>
+
+  <!-- Best Sellers -->
+  <section class="px-6 py-8 fade-in">
+    <h2 class="italic text-xl mb-4 border-b pb-2">Best Sellers</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="p-4 border rounded-lg text-center">
+        <img src="https://via.placeholder.com/100" class="mx-auto mb-2" />
+        <h3 class="font-semibold">Immunity Booster</h3>
+        <p class="text-green-600 font-bold">$25</p>
+        <button class="mt-2 w-full border border-green-600 text-green-700 py-1 rounded hover:bg-green-100">+ Add</button>
+      </div>
+      <div class="p-4 border rounded-lg text-center">
+        <img src="https://via.placeholder.com/100" class="mx-auto mb-2" />
+        <h3 class="font-semibold">Stress Relief</h3>
+        <p class="text-green-600 font-bold">$30</p>
+        <button class="mt-2 w-full border border-green-600 text-green-700 py-1 rounded hover:bg-green-100">+ Add</button>
+      </div>
+      <div class="p-4 border rounded-lg text-center">
+        <img src="https://via.placeholder.com/100" class="mx-auto mb-2" />
+        <h3 class="font-semibold">Joint Support</h3>
+        <p class="text-green-600 font-bold">$28</p>
+        <button class="mt-2 w-full border border-green-600 text-green-700 py-1 rounded hover:bg-green-100">+ Add</button>
+      </div>
+      <div class="p-4 border rounded-lg text-center">
+        <img src="https://via.placeholder.com/100" class="mx-auto mb-2" />
+        <h3 class="font-semibold">Brain Enhancer</h3>
+        <p class="text-green-600 font-bold">$32</p>
+        <button class="mt-2 w-full border border-green-600 text-green-700 py-1 rounded hover:bg-green-100">+ Add</button>
+      </div>
+    </div>
+    <div class="text-right mt-4">
+      <a href="#" class="underline text-green-700 hover:text-green-900">See Full Collection →</a>
+    </div>
+  </section>
+
+  <!-- Image + Line -->
+  <section class="p-6 fade-in">
+    <img src="https://images.pexels.com/photos/7615465/pexels-photo-7615465.jpeg" class="mx-auto rounded-xl max-h-72 object-cover mb-3" />
+    <p class="text-center max-w-lg mx-auto text-sm">Science meets tradition. Our formulas are tested, researched, and powered by nature’s wisdom.</p>
+  </section>
+
+  <!-- Circles -->
+  <section class="flex flex-wrap justify-center gap-10 text-center py-8 fade-in">
+    <div>
+      <div class="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center text-3xl font-bold text-green-800">99%</div>
+      <p class="mt-2 text-sm max-w-[120px] mx-auto">Active ingredients, no added binders or fillers</p>
+    </div>
+    <div>
+      <div class="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center text-3xl font-bold text-green-800">100%</div>
+      <p class="mt-2 text-sm max-w-[120px] mx-auto">Beneficial for health</p>
+    </div>
+    <div>
+      <div class="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center text-3xl font-bold text-green-800">∞</div>
+      <p class="mt-2 text-sm max-w-[120px] mx-auto">Best choice for you</p>
+    </div>
+  </section>
+
+  <!-- Sign Up -->
+  <section class="bg-gray-100 px-6 py-10 fade-in">
+    <h2 class="text-center text-2xl font-bold mb-4">Join ZAS Community</h2>
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto">
+      <input type="text" placeholder="First Name" class="border p-2 rounded" required>
+      <input type="text" placeholder="Last Name" class="border p-2 rounded" required>
+      <input type="email" placeholder="Email" class="border p-2 rounded col-span-2" required>
+      <input type="date" placeholder="Birthday" class="border p-2 rounded col-span-2" required>
+      <button type="submit" class="bg-green-600 text-white py-2 rounded col-span-2 hover:bg-green-700">Sign Up</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 border-t text-sm">
+    <div class="flex justify-center gap-6 text-xl mb-2">
+      <span>📘</span><span>📸</span><span>📱</span>
+    </div>
+    <div class="flex justify-center gap-6">
+      <a href="#">About Us</a>
+      <a href="#">Help & Info</a>
+      <a href="#">Certifications</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const sideMenu = document.getElementById('sideMenu');
+    menuBtn.addEventListener('click', () => {
+      sideMenu.classList.toggle('-translate-x-full');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZAS Health Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600&display=swap');
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #06494d; /* deep teal */
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Custom colors */
+    .coral-hover:hover {
+      color: #FF6F61 !important; /* coral */
+    }
+    .light-brown-bg {
+      background-color: #A9746E; /* light brown */
+    }
+    .light-brown-text {
+      color: #A9746E;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="bg-white shadow fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-4">
+        <button class="md:hidden text-2xl" aria-label="Open menu">☰</button>
+        <h1 class="text-2xl font-bold text-teal-700">ZAS Health Services</h1>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-sm font-semibold text-teal-700">
+        <a href="#" class="coral-hover">Home</a>
+        <a href="#" class="coral-hover">About Us</a>
+        <a href="#" class="coral-hover">Contact Us</a>
+        <a href="#" class="coral-hover">Products</a>
+        <a href="#" class="coral-hover">Best Sellers</a>
+      </nav>
+      <div class="flex gap-4 text-xl text-teal-700">
+        <button aria-label="Account" class="hover:text-teal-600">👤</button>
+        <button aria-label="Cart" class="hover:text-teal-600">🛒</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section
+    class="relative h-[100vh] bg-center bg-cover flex items-center justify-center text-center pt-20"
+    style="background-image: url('https://images.pexels.com/photos/7615466/pexels-photo-7615466.jpeg');"
+    aria-label="Hero image"
+  >
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="relative z-10 max-w-2xl px-4">
+      <h1 class="text-white text-4xl md:text-5xl font-bold leading-tight mb-4 fade-in">
+        Rooted in Nature. Backed by Science.
+      </h1>
+      <p class="text-white text-lg mb-6 fade-in">
+        Explore natural wellness with scientifically supported homeopathy for every lifestyle.
+      </p>
+      <input
+        type="text"
+        placeholder="Search our Store"
+        class="w-full px-4 py-2 rounded shadow focus:outline-none focus:ring-2 focus:ring-teal-400"
+        aria-label="Search our store"
+      />
+    </div>
+  </section>
+
+  <!-- Navigation Links Under Hero -->
+  <nav
+    class="bg-white shadow-md py-4 px-6 flex justify-center space-x-6 text-sm font-semibold text-teal-700"
+    aria-label="Secondary navigation"
+  >
+    <a href="#" class="hover:text-teal-600">Home</a>
+    <a href="#" class="hover:text-teal-600">About Us</a>
+    <a href="#" class="hover:text-teal-600">Contact Us</a>
+    <a href="#" class="hover:text-teal-600">Products</a>
+    <a href="#" class="hover:text-teal-600">Best Sellers</a>
+  </nav>
+
+  <!-- Best Sellers -->
+  <section class="px-6 py-16 bg-gray-100" aria-label="Best sellers products">
+    <h2 class="text-3xl font-semibold text-center text-teal-800 mb-10">Best Sellers</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div
+        class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition"
+        tabindex="0"
+      >
+        <img src="https://via.placeholder.com/120" alt="Immunity Booster" class="mx-auto mb-4 rounded" />
+        <h3 class="text-lg font-semibold light-brown-text">Immunity Booster</h3>
+        <p class="text-teal-600 font-bold mt-2">$25</p>
+      </div>
+      <div
+        class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition"
+        tabindex="0"
+      >
+        <img src="https://via.placeholder.com/120" alt="Stress Relief" class="mx-auto mb-4 rounded" />
+        <h3 class="text-lg font-semibold light-brown-text">Stress Relief</h3>
+        <p class="text-teal-600 font-bold mt-2">$30</p>
+      </div>
+      <div
+        class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition"
+        tabindex="0"
+      >
+        <img src="https://via.placeholder.com/120" alt="Joint Support" class="mx-auto mb-4 rounded" />
+        <h3 class="text-lg font-semibold light-brown-text">Joint Support</h3>
+        <p class="text-teal-600 font-bold mt-2">$28</p>
+      </div>
+      <div
+        class="bg-white p-6 rounded-xl shadow hover:shadow-lg text-center transition"
+        tabindex="0"
+      >
+        <img src="https://via.placeholder.com/120" alt="Brain Enhancer" class="mx-auto mb-4 rounded" />
+        <h3 class="text-lg font-semibold light-brown-text">Brain Enhancer</h3>
+        <p class="text-teal-600 font-bold mt-2">$32</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="bg-white px-6 py-16" aria-label="Customer testimonials">
+    <h2 class="text-3xl font-bold text-center mb-10 text-teal-800">What Our Customers Say</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <blockquote
+        class="bg-teal-50 p-6 rounded-xl shadow-md"
+        tabindex="0"
+        aria-label="Testimonial from Ayesha K."
+      >
+        <p class="italic text-sm light-brown-text">“ZAS products changed my life. The stress relief drops are my daily go-to!”</p>
+        <footer class="mt-4 font-semibold text-teal-700">– Ayesha K.</footer>
+      </blockquote>
+      <blockquote
+        class="bg-teal-50 p-6 rounded-xl shadow-md"
+        tabindex="0"
+        aria-label="Testimonial from Omar R."
+      >
+        <p class="italic text-sm light-brown-text">“Amazing natural supplements, beautifully packaged and effective.”</p>
+        <footer class="mt-4 font-semibold text-teal-700">– Omar R.</footer>
+      </blockquote>
+      <blockquote
+        class="bg-teal-50 p-6 rounded-xl shadow-md"
+        tabindex="0"
+        aria-label="Testimonial from Mehak L."
+      >
+        <p class="italic text-sm light-brown-text">“My whole family uses ZAS now. Highly recommended!”</p>
+        <footer class="mt-4 font-semibold text-teal-700">– Mehak L.</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Join Community -->
+  <section class="bg-teal-100 px-6 py-16" aria-label="Join the ZAS community newsletter signup">
+    <h2 class="text-3xl font-bold text-center text-teal-900 mb-8">Join the ZAS Community</h2>
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+      <input
+        type="text"
+        placeholder="First Name"
+        class="border p-3 rounded"
+        required
+        aria-label="First Name"
+      />
+      <input
+        type="text"
+        placeholder="Last Name"
+        class="border p-3 rounded"
+        required
+        aria-label="Last Name"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        class="border p-3 rounded col-span-2"
+        required
+        aria-label="Email Address"
+      />
+      <input
+        type="date"
+        class="border p-3 rounded col-span-2"
+        required
+        aria-label="Date of Birth"
+      />
+      <button
+        type="submit"
+        class="bg-teal-700 text-white py-3 rounded col-span-2 hover:bg-teal-800"
+      >
+        Sign Up
+      </button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#4B3B34] text-[#E3D7CD] py-12 px-6" role="contentinfo">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-4" style="color: #FF6F61">About ZAS</h3>
+        <p class="text-sm leading-relaxed max-w-sm light-brown-text">
+          ZAS Health Services is dedicated to natural, science-backed wellness solutions. Experience premium health products rooted in nature with the latest research.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4" style="color: #FF6F61">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-[#FF6F61]">Home</a></li>
+          <li><a href="#" class="hover:text-[#FF6F61]">About Us</a></li>
+          <li><a href="#" class="hover:text-[#FF6F61]">Products</a></li>
+          <li><a href="#" class="hover:text-[#FF6F61]">Contact Us</a></li>
+          <li><a href="#" class="hover:text-[#FF6F61]">Best Sellers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4" style="color: #FF6F61">Follow Us</h3>
+        <div class="flex space-x-4 text-2xl">
+          <a href="#" aria-label="Facebook" class="hover:text-[#FF6F61]">🔵</a>
+          <a href="#" aria-label="Instagram" class="hover:text-[#FF6F61]">📸</a>
+          <a href="#" aria-label="Twitter" class="hover:text-[#FF6F61]">🐦</a>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-xs mt-12 light-brown-text">&copy; 2025 ZAS Health Services. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

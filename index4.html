@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZAS Health Services</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --background-color: #FAF8F4;
+      --primary-color: #E4E2DD;
+      --accent-color: #C3C8BD;
+      --text-color: #2F2F2F;
+      --button-color: #708D81;
+      --button-hover: #556F61;
+      --highlight: #F3F1EC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.5;
+    }
+
+    /* Header */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--primary-color);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .top-bar i {
+      font-size: 1.3rem;
+      cursor: pointer;
+      margin: 0 0.5rem;
+      color: var(--text-color);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: var(--text-color);
+      letter-spacing: 2px;
+    }
+
+    /* Search */
+    .search-bar {
+      display: flex;
+      align-items: center;
+      padding: 0.7rem 1.5rem;
+      background: var(--highlight);
+      border-bottom: 1px solid #ddd;
+      font-style: italic;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .search-bar i {
+      margin-right: 0.75rem;
+      color: #888;
+    }
+
+    /* Navigation */
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 1rem 2rem;
+      background: var(--highlight);
+      font-style: italic;
+      border-bottom: 1px solid #ccc;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      text-decoration: underline;
+      color: var(--text-color);
+      position: relative;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--button-color);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 2.4rem;
+      left: 0;
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      min-width: 180px;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.25rem 0;
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: normal;
+    }
+
+    .dropdown-content a:hover {
+      color: var(--button-color);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero-video {
+      width: 100%;
+      height: 350px;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0;
+      color: white;
+      font-size: 2.2rem;
+      font-style: italic;
+      font-weight: 600;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+
+    .tagline {
+      font-size: 1.9rem;
+      text-align: center;
+      font-style: italic;
+      margin: 1rem auto 3rem auto;
+      max-width: 800px;
+      color: var(--text-color);
+    }
+
+    /* Best Sellers */
+    .section-title {
+      text-align: center;
+      font-style: italic;
+      font-size: 1.6rem;
+      background: var(--accent-color);
+      color: white;
+      padding: 1.2rem;
+      margin: 3rem 0 1.5rem 0;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 8px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 3px 7px rgba(0,0,0,0.15);
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0 1rem 3rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      width: 220px;
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+      object-fit: cover;
+      height: 150px;
+    }
+
+    .product p {
+      font-weight: 600;
+      margin: 0.4rem 0;
+      flex-grow: 1;
+    }
+
+    .product button {
+      margin-top: 0.6rem;
+      background: var(--button-color);
+      color: #fff;
+      border: none;
+      padding: 0.6rem 1.1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .product button:hover {
+      background: var(--button-hover);
+    }
+
+    .see-collection {
+      text-align: center;
+      margin: 2rem 0 4rem 0;
+    }
+
+    .see-collection button {
+      background: none;
+      border: 2px solid var(--text-color);
+      padding: 0.7rem 2.2rem;
+      cursor: pointer;
+      color: var(--text-color);
+      font-weight: 600;
+      border-radius: 6px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .see-collection button:hover {
+      background: var(--button-color);
+      color: #fff;
+      border-color: var(--button-color);
+    }
+
+    /* Info Image + Text */
+    .info-image {
+      width: 100%;
+      height: 280px;
+      background: url('https://images.unsplash.com/photo-1568158875632-4a3d145d2cfa?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      margin: 3rem 0 1rem 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .science-text {
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      font-size: 1.1rem;
+      text-align: center;
+      color: var(--text-color);
+      line-height: 1.6;
+      font-style: italic;
+      padding: 0 1rem;
+    }
+
+    /* Features Circles */
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .feature-item {
+      text-align: center;
+      max-width: 140px;
+    }
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin: 0 auto;
+      color: var(--text-color);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
+    }
+
+    .circle:hover {
+      background: var(--button-color);
+      color: white;
+      cursor: default;
+    }
+
+    .circle-text {
+      text-align: center;
+      font-size: 1rem;
+      margin-top: 0.8rem;
+      color: var(--text-color);
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    /* Signup Section */
+    .signup {
+      text-align: center;
+      margin: 3rem auto 4rem auto;
+      background: var(--primary-color);
+      padding: 2.5rem 1rem;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+
+    .signup h3 {
+      font-style: italic;
+      margin-bottom: 0.2rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+
+    .signup p {
+      font-style: italic;
+      margin-bottom: 1.2rem;
+      color: var(--text-color);
+    }
+
+    .signup input {
+      margin: 0.4rem 0.3rem;
+      padding: 0.6rem 0.7rem;
+      width: 85%;
+      max-width: 320px;
+      border: 1px solid #bbb;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .signup button {
+      margin-top: 1.5rem;
+      padding: 0.7rem 3rem;
+      background: var(--button-color);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .signup button:hover {
+      background: var(--button-hover);
+    }
+
+    /* Social Icons */
+    .social-icons {
+      text-align: center;
+      margin: 2rem 0 3rem 0;
+    }
+
+    .social-icons i {
+      font-size: 1.8rem;
+      margin: 0 1.2rem;
+      color: var(--text-color);
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .social-icons i:hover {
+      color: var(--button-color);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      padding: 2rem 1rem 1rem;
+      font-style: italic;
+      letter-spacing: 0.05em;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="top-bar">
+    <i class="fas fa-bars"></i>
+    <div class="logo">ZAS Health Services</div>
+    <div>
+      <i class="fas fa-user"></i>
+      <i class="fas fa-shopping-cart"></i>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <i class="fas fa-search"></i>
+    <span>Search our Store</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="#">Home</a>
+    <a href="#">Best Sellers</a>
+    <div class="dropdown" tabindex="0" aria-haspopup="true" aria-expanded="false">
+      <a href="#">Products <i class="fas fa-chevron-down"></i></a>
+      <div class="dropdown-content" aria-label="submenu">
+        <a href="#">Kids Range</a>
+        <a href="#">Women Range</a>
+        <a href="#">Men Range</a>
+        <a href="#">Beauty Range</a>
+        <a href="#">Diabetes Support</a>
+        <a href="#">Brain Health</a>
+        <a href="#">Bones & Joints</a>
+        <a href="#">Stress & Sleep</a>
+        <a href="#">Immune System</a>
+        <a href="#">Weight Management</a>
+      </div>
+    </div>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-video" role="img" aria-label="Calm nature background with health message">
+    <span>Your Journey to Natural Wellness Starts Here</span>
+  </section>
+
+  <div class="tagline"><em>Embrace Nature's Healing Power with ZAS</em></div>
+
+  <!-- Best Sellers -->
+  <section aria-labelledby="best-sellers-title">
+    <h2 class="section-title" id="best-sellers-title">Best Sellers</h2>
+    <div class="products">
+
+      <div class="product" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=400&q=80" alt="Herbal Supplement Bottle" />
+        <p>Natural Herbal Boost</p>
+        <button aria-label="Add Natural Herbal Boost to cart">+ Add</button>
+      </div>
+
+      <div class="product" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1549887539-33e1be960200?auto=format&fit=crop&w=400&q=80" alt="Vitamins and Capsules" />
+        <p>Vitality Vitamins Pack</p>
+        <button aria-label="Add Vitality Vitamins Pack to cart">+ Add</button>
+      </div>
+
+      <div class="product" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=400&q=80" alt="Relaxation Tea Pack" />
+        <p>Relaxation Tea Blend</p>
+        <button aria-label="Add Relaxation Tea Blend to cart">+ Add</button>
+      </div>
+
+      <div class="product" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=400&q=80" alt="Immune Support Capsules" />
+        <p>Immune Support Capsules</p>
+        <button aria-label="Add Immune Support Capsules to cart">+ Add</button>
+      </div>
+
+    </div>
+
+    <div class="see-collection">
+      <button aria-label="See the full product collection">See Full Collection →</button>
+    </div>
+  </section>
+
+  <!-- Info Image + Science Text -->
+  <div class="info-image" role="img" aria-label="Green leaves on wooden table representing natural medicine"></div>
+  <p class="science-text">
+    At ZAS Health Services, we combine the wisdom of homeopathy with modern science to promote holistic well-being. Our products contain 99% active ingredients, free from fillers and binders, ensuring pure, natural care for you and your family.
+  </p>
+
+  <!-- Features -->
+  <section aria-label="Key features of our products" class="features">
+    <div class="feature-item">
+      <div class="circle" aria-hidden="true">99%</div>
+      <div class="circle-text">Active ingredients, no added binders or fillers</div>
+    </div>
+    <div class="feature-item">
+      <div class="circle" aria-hidden="true">100%</div>
+      <div class="circle-text">Beneficial for health</div>
+    </div>
+    <div class="feature-item">
+      <div class="circle" aria-hidden="true">∞</div>
+      <div class="circle-text">Best choice for you</div>
+    </div>
+  </section>
+
+  <!-- Sign Up -->
+  <section class="signup" aria-label="Signup form to join the ZAS community">
+    <h3>Sign Up now</h3>
+    <p>Join ZAS Community and get exclusive offers</p>
+    <form>
+      <input type="text" placeholder="First Name" aria-label="First Name" required />
+      <input type="text" placeholder="Last Name" aria-label="Last Name" required /><br />
+      <input type="email" placeholder="Email" aria-label="Email Address" required /><br />
+      <input type="date" placeholder="Birthday" aria-label="Birthday" /><br />
+      <button type="submit">Sign Up</button>
+    </form>
+  </section>
+
+  <!-- Social Icons -->
+  <div class="social-icons" aria-label="Social media links">
+    <a href="#" aria-label="Facebook" tabindex="0"><i class="fab fa-facebook"></i></a>
+    <a href="#" aria-label="Instagram" tabindex="0"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="WhatsApp" tabindex="0"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>About Us | Help & Info | Certifications</p>
+  </footer>
+
+</body>
+</html>
