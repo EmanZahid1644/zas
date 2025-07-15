@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZAS Health Services</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Mobile Menu side panel */
+    #mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 250px;
+      background: white;
+      border-left: 1px solid #ccc;
+      padding: 1.5rem 1.5rem;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      overflow-y: auto;
+      z-index: 50;
+    }
+
+    #mobile-menu.open {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md">
+    <div
+      class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between relative"
+    >
+      <!-- Burger Menu (always visible) -->
+      <button
+        id="burger"
+        aria-label="Toggle menu"
+        class="text-2xl text-[#005f5f]"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Center Title -->
+      <h1
+        class="text-xl font-bold text-[#005f5f] absolute left-1/2 transform -translate-x-1/2"
+      >
+        ZAS Health Services
+      </h1>
+
+      <!-- Icons -->
+      <div class="flex items-center gap-4 text-xl text-[#005f5f]">
+        <a href="#"><i class="fas fa-user hover:text-[#d76d60]"></i></a>
+        <a href="#"><i class="fas fa-shopping-cart hover:text-[#d76d60]"></i></a>
+      </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="px-4 py-2 bg-white border-t">
+      <div class="max-w-md mx-auto relative">
+        <input
+          type="text"
+          placeholder="Search..."
+          class="w-full px-5 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#d76d60] transition duration-200 shadow-sm placeholder-gray-500 text-sm"
+        />
+        <i
+          class="fas fa-search absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+        ></i>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <nav
+      class="hidden md:flex justify-center bg-white border-t border-b py-3 text-[#005f5f] font-semibold space-x-8"
+    >
+      <a href="#" class="hover:text-[#d76d60]">Home</a>
+      <a href="#" class="hover:text-[#d76d60]">Best Sellers</a>
+
+      <!-- Products Dropdown -->
+      <div class="relative group inline-block">
+        <button
+          class="flex items-center gap-1 hover:text-[#d76d60] focus:outline-none"
+        >
+          Products <i class="fas fa-chevron-down text-sm"></i>
+        </button>
+        <div
+          class="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity z-10"
+        >
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Best Sellers</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Kids Range</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Women Range</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Men Range</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Diabetes Support</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Brain Health</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Bones, Muscles & Joints</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Stress & Sleep</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Immune System</a>
+          <a href="#" class="block px-4 py-2 hover:bg-[#f5fafa]">Weight Management</a>
+        </div>
+      </div>
+
+      <a href="#" class="hover:text-[#d76d60]">About Us</a>
+      <a href="#" class="hover:text-[#d76d60]">Contact Us</a>
+    </nav>
+
+    <!-- Mobile Menu (side panel) -->
+    <nav
+      id="mobile-menu"
+      class="md:hidden text-[#005f5f] font-semibold"
+      aria-label="Mobile Menu"
+    >
+      <a href="#" class="block py-2 hover:text-[#d76d60]">Home</a>
+      <a href="#" class="block py-2 hover:text-[#d76d60]">About Us</a>
+      <a href="#" class="block py-2 hover:text-[#d76d60]">Mission / Vision</a>
+
+      <!-- Products Dropdown -->
+      <div>
+        <button
+          id="products-toggle"
+          class="w-full flex justify-between items-center py-2 hover:text-[#d76d60]"
+          aria-expanded="false"
+          aria-controls="products-dropdown"
+        >
+          <span>Products</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div
+          id="products-dropdown"
+          class="ml-4 mt-2 hidden flex-col space-y-2 text-sm"
+        >
+          <a href="#" class="block hover:text-[#d76d60]">Best Sellers</a>
+          <a href="#" class="block hover:text-[#d76d60]">Kids Range</a>
+          <a href="#" class="block hover:text-[#d76d60]">Women Range</a>
+          <a href="#" class="block hover:text-[#d76d60]">Men Range</a>
+          <a href="#" class="block hover:text-[#d76d60]">Diabetes Support</a>
+          <a href="#" class="block hover:text-[#d76d60]">Brain Health</a>
+          <a href="#" class="block hover:text-[#d76d60]">Bones, Muscles & Joints</a>
+          <a href="#" class="block hover:text-[#d76d60]">Stress & Sleep</a>
+          <a href="#" class="block hover:text-[#d76d60]">Immune System</a>
+          <a href="#" class="block hover:text-[#d76d60]">Weight Management</a>
+        </div>
+      </div>
+
+      <a href="#" class="block py-2 hover:text-[#d76d60]">CEO Message</a>
+      <a href="#" class="block py-2 hover:text-[#d76d60]">Certifications</a>
+      <a href="#" class="block py-2 hover:text-[#d76d60]">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section
+    class="relative h-[70vh] bg-cover bg-center flex items-center justify-center"
+    style="background-image: url('https://images.pexels.com/photos/7615466/pexels-photo-7615466.jpeg'); background-position: center top;"
+  >
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative text-white text-center px-4">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">
+        Rooted in Nature. Backed by Science.
+      </h2>
+      <p class="text-lg">Experience luxury wellness — naturally.</p>
+    </div>
+  </section>
+
+  <!-- Best Sellers -->
+  <section class="px-6 py-20 bg-[#f5fafa]">
+    <h2 class="text-3xl font-bold text-center text-[#005f5f] mb-12">
+      Best Sellers
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <!-- Products -->
+      <div class="bg-white p-6 rounded-2xl shadow text-center">
+        <img
+          src="https://via.placeholder.com/120"
+          class="mx-auto mb-4 rounded-lg"
+          alt="Immunity Booster"
+        />
+        <h3 class="font-semibold">Immunity Booster</h3>
+        <p class="text-[#d76d60] font-bold mt-2">$25</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow text-center">
+        <img
+          src="https://via.placeholder.com/120"
+          class="mx-auto mb-4 rounded-lg"
+          alt="Stress Relief"
+        />
+        <h3 class="font-semibold">Stress Relief</h3>
+        <p class="text-[#d76d60] font-bold mt-2">$30</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow text-center">
+        <img
+          src="https://via.placeholder.com/120"
+          class="mx-auto mb-4 rounded-lg"
+          alt="Joint Support"
+        />
+        <h3 class="font-semibold">Joint Support</h3>
+        <p class="text-[#d76d60] font-bold mt-2">$28</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow text-center">
+        <img
+          src="https://via.placeholder.com/120"
+          class="mx-auto mb-4 rounded-lg"
+          alt="Brain Enhancer"
+        />
+        <h3 class="font-semibold">Brain Enhancer</h3>
+        <p class="text-[#d76d60] font-bold mt-2">$32</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Testimonials -->
+  <section class="bg-white px-6 py-20">
+    <h2 class="text-3xl font-bold text-center mb-12 text-[#005f5f]">
+      Customer Testimonials
+    </h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="bg-[#fdf8f6] p-6 rounded-xl shadow">
+        <p class="italic text-sm">
+          “ZAS products changed my life. The stress relief drops are my daily
+          go-to!”
+        </p>
+        <p class="mt-4 font-semibold text-[#d76d60]">– Ayesha K.</p>
+      </div>
+      <div class="bg-[#fdf8f6] p-6 rounded-xl shadow">
+        <p class="italic text-sm">
+          “Amazing natural supplements, beautifully packaged and effective.”
+        </p>
+        <p class="mt-4 font-semibold text-[#d76d60]">– Omar R.</p>
+      </div>
+      <div class="bg-[#fdf8f6] p-6 rounded-xl shadow">
+        <p class="italic text-sm">“My whole family uses ZAS now. Highly recommended!”</p>
+        <p class="mt-4 font-semibold text-[#d76d60]">– Mehak L.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About ZAS -->
+  <section class="bg-[#e6f1f1] px-6 py-20">
+    <h2 class="text-3xl font-bold text-center text-[#005f5f] mb-10">About ZAS</h2>
+    <p class="text-center max-w-2xl mx-auto text-gray-700 mb-6">
+      ZAS Health Services is dedicated to providing natural and effective wellness
+      solutions, supported by scientific research. Our mission is to blend nature
+      with modern health practices.
+    </p>
+    <div class="text-center">
+      <a href="#" class="text-[#d76d60] font-semibold underline"
+        >Join the ZAS Community</a
+      >
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white text-[#005f5f] py-6 text-center">
+    <p>© 2024 ZAS Health Services. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const burger = document.getElementById("burger");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const productsToggle = document.getElementById("products-toggle");
+    const productsDropdown = document.getElementById("products-dropdown");
+
+    burger.addEventListener("click", () => {
+      if (!mobileMenu.classList.contains("open")) {
+        mobileMenu.classList.add("open");
+        document.body.style.overflow = "hidden";
+      } else {
+        mobileMenu.classList.remove("open");
+        document.body.style.overflow = "auto";
+        productsDropdown.classList.add("hidden");
+      }
+    });
+
+    productsToggle.addEventListener("click", () => {
+      productsDropdown.classList.toggle("hidden");
+    });
+  </script>
+</body>
+</html>
