@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us - ZAS Health Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: #fff;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #064e3b;
+      font-size: 1.8rem;
+    }
+    nav a {
+      margin-left: 2rem;
+      text-decoration: none;
+      color: #064e3b;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-bottom: 3px solid transparent;
+      transition: 0.3s;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #f97316;
+      border-color: #f97316;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      animation: fadeIn 1s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: #064e3b;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+    h2::before {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 40px;
+      background: linear-gradient(180deg, #f97316, #c2410c);
+      left: 0;
+      top: 0.4rem;
+      border-radius: 4px;
+    }
+    .contact-info {
+      margin-bottom: 3rem;
+    }
+    .contact-info p {
+      font-size: 1.1rem;
+      color: #374151;
+      margin-bottom: 0.8rem;
+    }
+    .social-icons a {
+      margin-right: 1.5rem;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+    .social-icons a:hover {
+      transform: scale(1.1);
+    }
+
+    .form-section {
+      margin-bottom: 3rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+    }
+    input, textarea {
+      padding: 0.8rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    button {
+      background: #064e3b;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #f97316;
+    }
+
+    .map {
+      margin-top: 3rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 1rem;
+      }
+      nav a {
+        margin: 0 1rem 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ZAS Health Services</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about-us.html">About Us</a>
+      <a href="mission-vision.html">Mission & Vision</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Contact Us</h2>
+    <div class="contact-info">
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/447411229022" target="_blank">+44 7411 229022</a></p>
+      <p><strong>Instagram:</strong> <a href="https://instagram.com/zas_health_services" target="_blank">@zas_health_services</a></p>
+      <p><strong>Location:</strong> 35 Bertha Road, OL16 5BE, Rochdale, United Kingdom</p>
+
+      <div class="social-icons">
+        <a href="https://wa.me/447411229022" target="_blank" title="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="#25D366">
+            <path d="M380.9 97.1C339-4.8...Z" />
+          </svg>
+        </a>
+        <a href="https://instagram.com/zas_health_services" target="_blank" title="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="#E1306C">
+            <path d="M224.1 141c-63.6...z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps?q=35+Bertha+Road+Rochdale+OL16+5BE&output=embed"
+        width="100%"
+        height="400"
+        frameborder="0"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 ZAS Health Services. All rights reserved.
+  </footer>
+
+</body>
+</html>
