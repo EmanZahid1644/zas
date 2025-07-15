@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mission & Vision - ZAS Health Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      color: #064e3b;
+      font-size: 1.8rem;
+      user-select: none;
+    }
+    nav a {
+      margin-left: 2rem;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: #064e3b;
+      text-decoration: none;
+      padding-bottom: 0.25rem;
+      border-bottom: 3px solid transparent;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    nav a.active,
+    nav a:hover {
+      color: #f97316;
+      border-color: #f97316;
+    }
+    main {
+      max-width: 850px;
+      margin: 4rem auto 6rem auto;
+      padding: 0 1.5rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #064e3b;
+      position: relative;
+      padding-left: 1.3rem;
+    }
+    h2::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 8px;
+      height: 40px;
+      background: linear-gradient(180deg, #f97316 0%, #c2410c 100%);
+      border-radius: 3px;
+    }
+    section {
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s forwards;
+    }
+    section:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+    section:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+    p {
+      font-size: 1.18rem;
+      color: #374151;
+      max-width: 700px;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+      user-select: none;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 1.5rem;
+        padding: 0.3rem 0;
+      }
+      main {
+        margin: 3rem 1rem 5rem 1rem;
+      }
+      h2::before {
+        height: 32px;
+        top: 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>ZAS Health Services</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about-us.html">About Us</a>
+      <a href="mission-vision.html" class="active">Mission & Vision</a>
+      <a href="#">Products</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Our Mission</h2>
+      <p>
+        At ZAS Health Services, our mission is to make natural, science-backed wellness solutions accessible to everyone. We strive to empower individuals and families to lead healthier, balanced lives by offering products that harmonize nature’s healing power with modern innovation.
+      </p>
+    </section>
+
+    <section>
+      <h2>Our Vision</h2>
+      <p>
+        We envision becoming a leading name in natural health and wellness, recognized both in Pakistan and globally. Our goal is to inspire vibrant, sustainable lifestyles through trusted, effective, and ethically sourced products, fostering wellbeing across communities.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 ZAS Health Services. All rights reserved.
+  </footer>
+
+</body>
+</html>
